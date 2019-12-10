@@ -69,6 +69,19 @@
 |LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
 |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
 |NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
-|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
 
-Not Good - Wrong Number Of Lines
+Right number of lines
+
+==========================================
+========= TEST 2 : Empty Lines ===========
+==========================================
+
+|Cette ligne se termine par un point.
+|La ligne suivante est vide.
+|
+|Les 2 lignes suivantes sont vides
+|
+|
+|Et encore les 2 suivantes.
+|
+|

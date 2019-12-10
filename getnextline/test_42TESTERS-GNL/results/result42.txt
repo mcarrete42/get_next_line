@@ -34,16 +34,51 @@
 |CCCCCc
 |DDDDd
 |EEEe
+
+Not Good - Wrong Number Of Lines
+
+==========================================
+========= TEST 2 : Empty Lines ===========
+==========================================
+
 |FFf
 |Gg
 |h
 |Ii
 |JJj
+
+Not Good - Wrong Number Of Lines
+
+==========================================
+======== TEST 3 : The Empty File =========
+==========================================
+
 |KKKk
+
+Right number of lines
+
+==========================================
+========= TEST 4 : One New Line ==========
+==========================================
+
 |LLLLl
 |MMMMMm
+
+Right number of lines
+
+==========================================
+========= TEST 5 : Four New Lines ========
+==========================================
+
 |NNNNNNn
 |OOOOOOOo
+
+Not Good - Wrong Number Of Lines
+
+==========================================
+============== TEST 6 : 42 ===============
+==========================================
+
 |PPPPPPPPp
 |QQQQQQQQQq
 |RRRRRRRRRRr
@@ -51,24 +86,30 @@
 |TTTTTTTTTTTTt
 |UUUUUUUUUUUUUu
 |VVVVVVVVVVVVVVv
-|WWWWWWWWWWWWWWWw
-|XXXXXXXXXXXXXXXXx
-|YYYYYYYYYYYYYYYYYy
-|ZZZZZZZZZZZZZZZZZZz
-|AAAAAAAAAAAAAAAAAAAa
-|BBBBBBBBBBBBBBBBBBBBb
-|CCCCCCCCCCCCCCCCCCCCCc
-|DDDDDDDDDDDDDDDDDDDDDDd
-|EEEEEEEEEEEEEEEEEEEEEEEe
-|FFFFFFFFFFFFFFFFFFFFFFFFf
-|GGGGGGGGGGGGGGGGGGGGGGGGGg
-|HHHHHHHHHHHHHHHHHHHHHHHHHHh
-|IIIIIIIIIIIIIIIIIIIIIIIIIIIi
-|JJJJJJJJJJJJJJJJJJJJJJJJJJJJj
-|KKKKKKKKKKKKKKKKKKKKKKKKKKKKKk
-|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLl
-|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
-|NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn
 
 Not Good - Wrong Number Of Lines
+
+==========================================
+============= TEST 7 : Marge =============
+==========================================
+
+WWWWWWWWWWWWWWWw
+XXXXXXXXXXXXXXXXx
+YYYYYYYYYYYYYYYYYy
+ZZZZZZZZZZZZZZZZZZz
+  OOOOOOOOOOOOOO
+  OOOOOOOOOOOOOO
+   OOOOOOOOOOOOOO
+   OOOOOOOOOOOOOO
+   OOOOO \_| \_|O
+   OOOO \/  \/  \
+   OOOO (o   )o  )
+
+Not Good - Wrong Number Of Lines
+
+==========================================
+========= TEST 8 : Wrong Input ===========
+==========================================
+
+Well Done, you return -1 if no FD
+
