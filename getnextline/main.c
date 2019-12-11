@@ -5,62 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/04 18:36:21 by mcarrete          #+#    #+#             */
-/*   Updated: 2019/12/09 18:11:24 by mcarrete         ###   ########.fr       */
+/*   Created: 2019/11/09 14:11:38 by pcuadrad          #+#    #+#             */
+/*   Updated: 2019/12/11 19:48:59 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <fcntl.h>
-#include <unistd.h>
-#define BUF_SIZE 10
+#include <sys/uio.h>
+#include <sys/types.h>
+#include "get_next_line.h"
 
-void	ft_putchar(char a)
+int main(int argc, char **argv)
 {
-	write(1, &a, 1);
-}
+	int fd;
+	int ret;
+	int line;
+	char *buff;
+	int 	i;
 
-int		ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-		i++;
-	return (i);
-}
-
-void	ft_putstr_fd(int fd, char *str)
-{
-	write(fd, str, ft_strlen(str));
-}
-
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	line = 0;
+	if (argc > 1)
 	{
-		ft_putchar(*str);
-		str++;
+		i = 0;
+		while (++i < argc)
+		{
+			fd = open(argv[i], O_RDONLY);
+			printf("%d- archivo: %s\n",i, argv[i]);
+			while ((ret = get_next_line(fd, &buff)) > 0)
+			{
+				printf("[Return: %d] Line #%d: %s\n", ret, ++line, buff);
+				free(buff);
+			}
+			printf("[Return: %d] Line #%d: %s\n", ret, ++line, buff);
+			if (ret == -1)
+				printf("-----------\nError\n");
+			else if (ret == 0)
+				printf("-----------\nEnd of file\n");
+			free(buff);
+		}
 	}
+	if (argc == 1)
+	{
+		while ((ret = get_next_line(0, &buff)) > 0)
+			printf("[Return: %d] Line #%d: %s\n", ret, ++line, buff);
+		if (ret == -1)
+			printf("-----------\nError\n");
+		else if (ret == 0)
+			printf("-----------\nEnd of stdin\n");
+		free(buff);
+		close(fd);
+	}
+	return (0);
 }
 
-void	ft_putnbr(int nb)
-{
-	long int n;
 
-	n = nb;
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-	}
-	ft_putchar(n % 10 + '0');
-}
-
-
+/*
+//MULTIPLE FDS
 int   main(void)
 {
 	char	*line;
@@ -89,60 +90,33 @@ int   main(void)
 	printf("%s\n", line);
 	get_next_line(fd2, &line);
 	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd2, &line);
+	printf("%s\n", line);
 	return (0);
 }
-
-
-/* OPEN & CLOSE MAIN
-int     main ()
-{
-	int fd;
-	int ret;
-	char buf[BUF_SIZE + 1];
-	fd = open("test.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr("Open failed\n"); // check the fd for errors
-		return(1);
-	}
-	while ((ret = read(fd, buf, BUF_SIZE)))  //while read != 0
-	{
-		buf[ret] = '\0';
-		ft_putnbr(ret); //print the number of bytes that has been read
-		ft_putstr(buf); //print what has been read
-	}
-	if (close(fd) == -1)
-	{
-		ft_putstr("Close failed\n"); // putstr to write in the fd
-		return (1);
-	}
-	return(0);
-}
-
 */
-
-
 /*
-int		main(void)
+//ONE FDS
+int   main(void)
 {
-	int fd;
-	char *line;
-	fd = open("42", O_RDONLY);
+	char	*line;
+	int		fd1;
 
-	if (fd == -1)
-	{
-		ft_putstr("Open failed\n"); // check the fd for errors
-		return(1);
-	}
-	printf("fd = %d\n", fd);
-	while (get_next_line(fd, &line))
-		printf("\nReturn= %d\n", get_next_line(fd, &line));
-	if (close(fd) == -1)
-	{
-		ft_putstr("Close failed\n"); // putstr to write in the fd
-		return (1);
-	}
-	return(0);
+	fd1 = open("42", O_RDONLY);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	get_next_line(fd1, &line);
+	printf("%s\n", line);
+	return (0);
 }
 */
-
